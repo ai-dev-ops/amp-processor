@@ -5,6 +5,7 @@
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <h1>ai job bank</h1>
           <hr />
+          
           <button class="btn btn-primary" @click="show = !show">Job Deal</button>
           <button class="btn btn-primary" @click="load = !load">Load / Remove Job/Ops Pair</button>
           <button class="btn btn-primary" @click="step = step++">Next Step (M8 engine)</button>
