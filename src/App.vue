@@ -5,7 +5,8 @@
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <h1>ai job bank</h1>
           <hr />
-          
+          <VueShowdown :markdown="fileContent"></VueShowdown>
+          <hr />
           <button class="btn btn-primary" @click="show = !show">Job Deal</button>
           <button class="btn btn-primary" @click="load = !load">Load / Remove Job/Ops Pair</button>
           <button class="btn btn-primary" @click="step = step++">Next Step (M8 engine)</button>
@@ -623,14 +624,37 @@
 </template>
 
 <script>
+import VueShowdown, { showdown } from "vue-showdown";
+
+import MarkDownData from "./assets/jobops/1-job-table.md";
+
+showdown.setFlavor("github");
+
 export default {
+  name: "app",
+  components: VueShowdown,
   data() {
     return {
+      fileContent: null,
+      rawContent: null,
       show: false,
-      load: true
+      load: true,
+      step: 0
     };
   },
-  name: "app"
+    created: function() {
+    // https://codesandbox.io/s/vue-template-qx5n7
+    // https://stackoverflow.com/questions/54009901/retrieve-content-from-markdown-file-and-convert-it-to-valid-html-code-in-vuejs
+    // const fileToRender = `./assets/documentation/general/welcome.md`;
+    // const rawContent = ""; // Read the file content using fileToRender
+    // this.fileContent = "### marked(rawContent) should get executed";
+    this.getContent();
+  },
+  methods: {
+    getContent() {
+      this.fileContent = MarkDownData;
+    }
+  }
 };
 </script>
 
