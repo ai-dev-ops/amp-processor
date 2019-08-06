@@ -626,14 +626,14 @@
 <script>
 import VueShowdown, { showdown } from "vue-showdown";
 
-import MarkDownData from "./assets/jobops/1-job-table.md";
+import MarkDownData from "./assets/jobops/job-table.md";
 
 showdown.setFlavor("github");
 
 export default {
   name: "app",
   components: VueShowdown,
-  data() {
+  data: function() {
     return {
       fileContent: null,
       rawContent: null,
